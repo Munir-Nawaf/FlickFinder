@@ -25,6 +25,7 @@ public class MovieDAO {
 	 */
 	private final Connection connection;
 
+
 	/**
 	 * Constructs a SQLiteMovieDAO object and gets the database connection.
 	 * 
@@ -46,7 +47,6 @@ public class MovieDAO {
 
 		Statement statement = connection.createStatement();
 		
-		// I've set the limit to 10 for development purposes - you should do the same.
 		ResultSet rs = statement.executeQuery("select * from movies LIMIT 50");
 		
 		while (rs.next()) {
@@ -75,10 +75,39 @@ public class MovieDAO {
 			return new Movie(rs.getInt("id"), rs.getString("title"), rs.getInt("year"));
 		}
 		
-		// return null if the id does not return a movie.
 
 		return null;
 
+	}
+
+	public List<Movie> getRatingsByYear(int year) throws SQLException {
+		List<Movie> movies = new ArrayList<>();
+
+		String query = """
+        SELECT m.id, m.title, m.year, AVG(r.rating) as avg_rating
+        FROM movies m
+        JOIN ratings r ON m.id = r.movie_id
+        WHERE m.year = ?
+        GROUP BY m.id
+        ORDER BY avg_rating DESC
+        LIMIT 50
+    """;
+
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setInt(1, year);
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			Movie movie = new Movie(
+					rs.getInt("id"),
+					rs.getString("title"),
+					rs.getInt("year")
+			);
+
+			movies.add(movie);
+		}
+
+		return movies;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.flickfinder.controller;
 
+import com.flickfinder.dao.PersonDAO;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,6 +37,7 @@ class MovieControllerTest {
 	 */
 
 	private MovieController movieController;
+	private PersonDAO personDAO;
 
 	@BeforeEach
 	void setUp() {
@@ -44,7 +47,7 @@ class MovieControllerTest {
 		ctx = mock(Context.class);
 
 		// We create an instance of the MovieController class and pass the mock object
-		movieController = new MovieController(movieDAO);
+		movieController = new MovieController(movieDAO, personDAO);
 	}
 
 	/**

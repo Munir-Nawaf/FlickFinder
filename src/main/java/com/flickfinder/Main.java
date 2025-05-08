@@ -28,6 +28,7 @@ public class Main {
          * In this case, we are using a connection string to connect to the database.
          * For testing, we are using an in-memory database.
          */
+
         Database.getInstance("jdbc:sqlite:" + dbPath);
         // start the server
         AppConfig.startServer(port);

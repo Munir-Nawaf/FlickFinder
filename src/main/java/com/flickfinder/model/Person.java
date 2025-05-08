@@ -5,11 +5,55 @@ package com.flickfinder.model;
  * 
  * @TODO: Implement this class
  */
+
+        //Done
 public class Person {
 
-	// - Add your code here: use the MovieDAO.java as an example
-	// - Check the ERD and database schema in the docs folder
-	// (./docs/database_schema.md) to ensure each column in the People table
-	// has an attribute in the model. (DELETE THIS COMMENT WHEN DONE)
+    private int id;
+    private String name;
+    private int birth;
 
+    public Person() {
+        super();
+    }
+
+    public Person(int id, String name, int birth) {
+        this.id = id;
+        this.name = name;
+        this.birth = birth;
+    }
+
+    // getter
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBirth() {
+        return birth;
+    }
+
+
+    //setter
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBirth(int birth) {
+        this.birth = birth;
+    }
+
+
+    public String toString() {
+        return id + "|" + name + "|" + birth;
+    }
 }
+
+
