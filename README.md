@@ -36,3 +36,13 @@ It demonstrates clean backend architecture with Models, Controllers, and DAOs.
 | GET | `/people/{id}` | Get person by ID |
 | GET | `/people/{id}/movies` | Get all movies a person appears in |
 
+
+
+## 🧠 What I Learned
+- Designing and building REST APIs
+- SQL querying and data retrieval
+- clean separation of Model, DAO, Controller layers
+- Testing backend logic with JUnit & Mockito
+
+---
+
